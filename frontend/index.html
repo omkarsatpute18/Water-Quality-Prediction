@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Quality Prediction</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>Water Quality Prediction</h1>
+            <p>
+                Machine Learning based Water Potability Evaluation
+            </p>
+        </header>
+
+
+        <!-- Main Card -->
+        <div class="card">
+
+            <h2>Enter Water Quality Parameters</h2>
+
+            <p class="description">
+                Enter the values of the water sample below to evaluate
+                whether the water is likely to be potable or not potable.
+            </p>
+
+
+            <!-- Input Form -->
+            <form id="predictionForm">
+
+                <div class="form-grid">
+
+                    <!-- pH -->
+                    <div class="input-group">
+                        <label for="ph">pH</label>
+                        <input
+                            type="number"
+                            id="ph"
+                            step="any"
+                            placeholder="Example: 7.0"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Hardness -->
+                    <div class="input-group">
+                        <label for="hardness">Hardness</label>
+                        <input
+                            type="number"
+                            id="hardness"
+                            step="any"
+                            placeholder="Example: 200"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Solids -->
+                    <div class="input-group">
+                        <label for="solids">Solids</label>
+                        <input
+                            type="number"
+                            id="solids"
+                            step="any"
+                            placeholder="Example: 20000"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Chloramines -->
+                    <div class="input-group">
+                        <label for="chloramines">Chloramines</label>
+                        <input
+                            type="number"
+                            id="chloramines"
+                            step="any"
+                            placeholder="Example: 7"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Sulfate -->
+                    <div class="input-group">
+                        <label for="sulfate">Sulfate</label>
+                        <input
+                            type="number"
+                            id="sulfate"
+                            step="any"
+                            placeholder="Example: 300"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Conductivity -->
+                    <div class="input-group">
+                        <label for="conductivity">Conductivity</label>
+                        <input
+                            type="number"
+                            id="conductivity"
+                            step="any"
+                            placeholder="Example: 400"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Organic Carbon -->
+                    <div class="input-group">
+                        <label for="organic_carbon">Organic Carbon</label>
+                        <input
+                            type="number"
+                            id="organic_carbon"
+                            step="any"
+                            placeholder="Example: 14"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Trihalomethanes -->
+                    <div class="input-group">
+                        <label for="trihalomethanes">Trihalomethanes</label>
+                        <input
+                            type="number"
+                            id="trihalomethanes"
+                            step="any"
+                            placeholder="Example: 70"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Turbidity -->
+                    <div class="input-group">
+                        <label for="turbidity">Turbidity</label>
+                        <input
+                            type="number"
+                            id="turbidity"
+                            step="any"
+                            placeholder="Example: 4"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="button-container">
+
+                    <button type="submit" class="predict-btn">
+                        Evaluate Water Quality
+                    </button>
+
+                    <button type="button" id="clearBtn" class="clear-btn">
+                        Clear
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- Loading -->
+            <div id="loading" class="loading hidden">
+                Evaluating water quality...
+            </div>
+
+
+            <!-- Result -->
+            <div id="result" class="result hidden">
+
+                <h2>Prediction Result</h2>
+
+                <div id="predictionText" class="prediction-text">
+                    --
+                </div>
+
+                <div class="probability-container">
+
+                    <div class="probability-box">
+                        <span>Not Potable</span>
+                        <strong id="notPotableProbability">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="probability-box">
+                        <span>Potable</span>
+                        <strong id="potableProbability">
+                            0%
+                        </strong>
+                    </div>
+
+                </div>
+
+                <p id="resultMessage"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Water Quality Prediction System
+            </p>
+
+            <p>
+                Machine Learning Mini Project
+            </p>
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
