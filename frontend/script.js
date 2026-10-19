@@ -1,206 +1,246 @@
-const form = document.getElementById("predictionForm");
+// ==========================================================
+// Get HTML Elements
+// ==========================================================
 
-const clearBtn = document.getElementById("clearBtn");
+const predictionForm =
+    document.getElementById("predictionForm");
 
-const loading = document.getElementById("loading");
+const clearButton =
+    document.getElementById("clearButton");
 
-const result = document.getElementById("result");
+const loading =
+    document.getElementById("loading");
 
-const predictionText =
-    document.getElementById("predictionText");
+const result =
+    document.getElementById("result");
 
-const notPotableProbability =
-    document.getElementById("notPotableProbability");
+const errorBox =
+    document.getElementById("error");
+
+const predictionResult =
+    document.getElementById("predictionResult");
 
 const potableProbability =
     document.getElementById("potableProbability");
 
-const resultMessage =
-    document.getElementById("resultMessage");
+const notPotableProbability =
+    document.getElementById("notPotableProbability");
 
 
+// ==========================================================
+// Form Submit
+// ==========================================================
 
-/*
-    Form Submit
-*/
+predictionForm.addEventListener(
+    "submit",
+    async function (event) {
 
-form.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-
-    // Get input values
-
-    const data = {
-
-        ph: Number(
-            document.getElementById("ph").value
-        ),
-
-        hardness: Number(
-            document.getElementById("hardness").value
-        ),
-
-        solids: Number(
-            document.getElementById("solids").value
-        ),
-
-        chloramines: Number(
-            document.getElementById("chloramines").value
-        ),
-
-        sulfate: Number(
-            document.getElementById("sulfate").value
-        ),
-
-        conductivity: Number(
-            document.getElementById("conductivity").value
-        ),
-
-        organic_carbon: Number(
-            document.getElementById("organic_carbon").value
-        ),
-
-        trihalomethanes: Number(
-            document.getElementById("trihalomethanes").value
-        ),
-
-        turbidity: Number(
-            document.getElementById("turbidity").value
-        )
-
-    };
+        event.preventDefault();
 
 
-    // Show loading
+        // Hide previous result/error
 
-    loading.classList.remove("hidden");
+        result.classList.add("hidden");
 
-    result.classList.add("hidden");
+        errorBox.classList.add("hidden");
 
 
-    try {
+        // Show loading
 
-        /*
-            Send data to Python backend
-        */
+        loading.classList.remove("hidden");
 
-        const response = await fetch("/predict", {
 
-                method: "POST",
+        // ==================================================
+        // Collect User Input
+        // ==================================================
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+        const data = {
 
-                body: JSON.stringify(data)
+            ph: parseFloat(
+                document.getElementById("ph").value
+            ),
+
+            Hardness: parseFloat(
+                document.getElementById("Hardness").value
+            ),
+
+            Solids: parseFloat(
+                document.getElementById("Solids").value
+            ),
+
+            Chloramines: parseFloat(
+                document.getElementById("Chloramines").value
+            ),
+
+            Sulfate: parseFloat(
+                document.getElementById("Sulfate").value
+            ),
+
+            Conductivity: parseFloat(
+                document.getElementById("Conductivity").value
+            ),
+
+            Organic_carbon: parseFloat(
+                document.getElementById("Organic_carbon").value
+            ),
+
+            Trihalomethanes: parseFloat(
+                document.getElementById("Trihalomethanes").value
+            ),
+
+            Turbidity: parseFloat(
+                document.getElementById("Turbidity").value
+            )
+
+        };
+
+
+        try {
+
+
+            // ==================================================
+            // Send Request to Flask
+            // ==================================================
+
+            const response = await fetch(
+                "/predict",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+            );
+
+
+            const responseData =
+                await response.json();
+
+
+            // ==================================================
+            // Handle Error
+            // ==================================================
+
+            if (!response.ok) {
+
+                throw new Error(
+                    responseData.error ||
+                    "Prediction failed"
+                );
 
             }
-        );
 
 
-        const prediction =
-            await response.json();
+            // ==================================================
+            // Display Prediction
+            // ==================================================
+
+            predictionResult.textContent =
+                responseData.prediction;
 
 
-        if (!response.ok) {
+            potableProbability.textContent =
+                responseData.potable_probability +
+                "%";
 
-            throw new Error(
-                prediction.error ||
-                "Prediction failed"
+
+            notPotableProbability.textContent =
+                responseData.not_potable_probability +
+                "%";
+
+
+            // Remove previous result classes
+
+            predictionResult.classList.remove(
+                "potable",
+                "not-potable"
+            );
+
+
+            // Add correct class
+
+            if (
+                responseData.prediction ===
+                "Potable"
+            ) {
+
+                predictionResult.classList.add(
+                    "potable"
+                );
+
+            } else {
+
+                predictionResult.classList.add(
+                    "not-potable"
+                );
+
+            }
+
+
+            // Show result
+
+            result.classList.remove(
+                "hidden"
             );
 
         }
 
 
-        /*
-            Display prediction
-        */
+        catch (error) {
 
-        if (prediction.prediction === 1) {
+            console.error(error);
 
-            predictionText.textContent =
-                "✓ POTABLE";
 
-            predictionText.style.color =
-                "#16a34a";
+            errorBox.textContent =
+                "Error: " +
+                error.message;
 
-            resultMessage.textContent =
-                "The machine learning model predicts that this water sample is likely to be potable.";
 
-        }
-
-        else {
-
-            predictionText.textContent =
-                "✗ NOT POTABLE";
-
-            predictionText.style.color =
-                "#dc2626";
-
-            resultMessage.textContent =
-                "The machine learning model predicts that this water sample is likely to be not potable.";
+            errorBox.classList.remove(
+                "hidden"
+            );
 
         }
 
 
-        /*
-            Display probabilities
-        */
+        finally {
 
-        notPotableProbability.textContent =
-            prediction.not_potable_probability.toFixed(2)
-            + "%";
+            loading.classList.add(
+                "hidden"
+            );
 
-
-        potableProbability.textContent =
-            prediction.potable_probability.toFixed(2)
-            + "%";
-
-
-        // Show result
-
-        result.classList.remove("hidden");
+        }
 
     }
+);
 
 
-    catch (error) {
+// ==========================================================
+// Clear Button
+// ==========================================================
 
-        console.error(error);
+clearButton.addEventListener(
+    "click",
+    function () {
 
-        predictionText.textContent =
-            "Error";
+        predictionForm.reset();
 
-        predictionText.style.color =
-            "#dc2626";
+        result.classList.add(
+            "hidden"
+        );
 
-        resultMessage.textContent =
-            "Unable to connect to the prediction server. Please make sure the Python backend is running.";
-
-        result.classList.remove("hidden");
-
-    }
-
-
-    finally {
-
-        loading.classList.add("hidden");
+        errorBox.classList.add(
+            "hidden"
+        );
 
     }
-
-});
-
-
-
-/*
-    Clear Button
-*/
-
-clearBtn.addEventListener("click", function() {
-
-    form.reset();
-
-    result.classList.add("hidden");
-
-});
+);

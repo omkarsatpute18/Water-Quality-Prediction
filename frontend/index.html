@@ -1,233 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Water Quality Prediction</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>
+        Water Quality Prediction
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- ==================================================
+         Main Container
+    =================================================== -->
+
     <div class="container">
 
-        <!-- Header -->
-        <header>
-            <h1>Water Quality Prediction</h1>
+
+        <!-- ==================================================
+             Header
+        =================================================== -->
+
+        <div class="header">
+
+            <h1>
+                Water Quality Prediction
+            </h1>
+
             <p>
                 Machine Learning based Water Potability Evaluation
             </p>
-        </header>
+
+        </div>
 
 
-        <!-- Main Card -->
+        <!-- ==================================================
+             Main Card
+        =================================================== -->
+
         <div class="card">
 
-            <h2>Enter Water Quality Parameters</h2>
 
-            <p class="description">
-                Enter the values of the water sample below to evaluate
-                whether the water is likely to be potable or not potable.
+            <h2>
+                Enter Water Quality Parameters
+            </h2>
+
+
+            <p class="input-note">
+
+                Enter the water quality parameters below.
+                Example values are shown inside each field.
+
             </p>
 
 
-            <!-- Input Form -->
+            <!-- ==================================================
+                 Prediction Form
+            =================================================== -->
+
             <form id="predictionForm">
+
 
                 <div class="form-grid">
 
+
                     <!-- pH -->
-                    <div class="input-group">
-                        <label for="ph">pH</label>
+
+                    <div class="form-group">
+
+                        <label for="ph">
+                            pH
+                        </label>
+
                         <input
                             type="number"
                             id="ph"
+                            name="ph"
                             step="any"
                             placeholder="Example: 7.0"
                             required
                         >
+
                     </div>
 
 
                     <!-- Hardness -->
-                    <div class="input-group">
-                        <label for="hardness">Hardness</label>
+
+                    <div class="form-group">
+
+                        <label for="Hardness">
+                            Hardness
+                        </label>
+
                         <input
                             type="number"
-                            id="hardness"
+                            id="Hardness"
+                            name="Hardness"
                             step="any"
                             placeholder="Example: 200"
                             required
                         >
+
                     </div>
 
 
                     <!-- Solids -->
-                    <div class="input-group">
-                        <label for="solids">Solids</label>
+
+                    <div class="form-group">
+
+                        <label for="Solids">
+                            Solids
+                        </label>
+
                         <input
                             type="number"
-                            id="solids"
+                            id="Solids"
+                            name="Solids"
                             step="any"
                             placeholder="Example: 20000"
                             required
                         >
+
                     </div>
 
 
                     <!-- Chloramines -->
-                    <div class="input-group">
-                        <label for="chloramines">Chloramines</label>
+
+                    <div class="form-group">
+
+                        <label for="Chloramines">
+                            Chloramines
+                        </label>
+
                         <input
                             type="number"
-                            id="chloramines"
+                            id="Chloramines"
+                            name="Chloramines"
                             step="any"
-                            placeholder="Example: 7"
+                            placeholder="Example: 7.0"
                             required
                         >
+
                     </div>
 
 
                     <!-- Sulfate -->
-                    <div class="input-group">
-                        <label for="sulfate">Sulfate</label>
+
+                    <div class="form-group">
+
+                        <label for="Sulfate">
+                            Sulfate
+                        </label>
+
                         <input
                             type="number"
-                            id="sulfate"
+                            id="Sulfate"
+                            name="Sulfate"
                             step="any"
                             placeholder="Example: 300"
                             required
                         >
+
                     </div>
 
 
                     <!-- Conductivity -->
-                    <div class="input-group">
-                        <label for="conductivity">Conductivity</label>
+
+                    <div class="form-group">
+
+                        <label for="Conductivity">
+                            Conductivity
+                        </label>
+
                         <input
                             type="number"
-                            id="conductivity"
+                            id="Conductivity"
+                            name="Conductivity"
                             step="any"
                             placeholder="Example: 400"
                             required
                         >
+
                     </div>
 
 
                     <!-- Organic Carbon -->
-                    <div class="input-group">
-                        <label for="organic_carbon">Organic Carbon</label>
+
+                    <div class="form-group">
+
+                        <label for="Organic_carbon">
+                            Organic Carbon
+                        </label>
+
                         <input
                             type="number"
-                            id="organic_carbon"
+                            id="Organic_carbon"
+                            name="Organic_carbon"
                             step="any"
                             placeholder="Example: 14"
                             required
                         >
+
                     </div>
 
 
                     <!-- Trihalomethanes -->
-                    <div class="input-group">
-                        <label for="trihalomethanes">Trihalomethanes</label>
+
+                    <div class="form-group">
+
+                        <label for="Trihalomethanes">
+                            Trihalomethanes
+                        </label>
+
                         <input
                             type="number"
-                            id="trihalomethanes"
+                            id="Trihalomethanes"
+                            name="Trihalomethanes"
                             step="any"
                             placeholder="Example: 70"
                             required
                         >
+
                     </div>
 
 
                     <!-- Turbidity -->
-                    <div class="input-group">
-                        <label for="turbidity">Turbidity</label>
+
+                    <div class="form-group">
+
+                        <label for="Turbidity">
+                            Turbidity
+                        </label>
+
                         <input
                             type="number"
-                            id="turbidity"
+                            id="Turbidity"
+                            name="Turbidity"
                             step="any"
-                            placeholder="Example: 4"
+                            placeholder="Example: 4.0"
                             required
                         >
+
                     </div>
+
 
                 </div>
 
 
-                <!-- Buttons -->
+                <!-- ==================================================
+                     Buttons
+                =================================================== -->
+
                 <div class="button-container">
 
-                    <button type="submit" class="predict-btn">
+                    <button
+                        type="submit"
+                        class="predict-btn"
+                    >
                         Evaluate Water Quality
                     </button>
 
-                    <button type="button" id="clearBtn" class="clear-btn">
+
+                    <button
+                        type="button"
+                        class="clear-btn"
+                        id="clearButton"
+                    >
                         Clear
                     </button>
 
                 </div>
 
+
             </form>
 
 
-            <!-- Loading -->
-            <div id="loading" class="loading hidden">
+            <!-- ==================================================
+                 Loading Message
+            =================================================== -->
+
+            <div
+                id="loading"
+                class="loading hidden"
+            >
+
                 Evaluating water quality...
+
             </div>
 
 
-            <!-- Result -->
-            <div id="result" class="result hidden">
+            <!-- ==================================================
+                 Result
+            =================================================== -->
 
-                <h2>Prediction Result</h2>
+            <div
+                id="result"
+                class="result hidden"
+            >
 
-                <div id="predictionText" class="prediction-text">
-                    --
-                </div>
+                <h2 id="predictionResult"></h2>
+
 
                 <div class="probability-container">
 
-                    <div class="probability-box">
-                        <span>Not Potable</span>
-                        <strong id="notPotableProbability">
-                            0%
-                        </strong>
-                    </div>
 
                     <div class="probability-box">
-                        <span>Potable</span>
+
+                        <span>
+                            Potable Probability
+                        </span>
+
                         <strong id="potableProbability">
                             0%
                         </strong>
+
                     </div>
+
+
+                    <div class="probability-box">
+
+                        <span>
+                            Not Potable Probability
+                        </span>
+
+                        <strong id="notPotableProbability">
+                            0%
+                        </strong>
+
+                    </div>
+
 
                 </div>
 
-                <p id="resultMessage"></p>
-
             </div>
+
+
+            <!-- ==================================================
+                 Error Message
+            =================================================== -->
+
+            <div
+                id="error"
+                class="error hidden"
+            ></div>
+
 
         </div>
 
 
-        <!-- Footer -->
-        <footer>
-            <p>
-                Water Quality Prediction System
-            </p>
+        <!-- ==================================================
+             Footer
+        =================================================== -->
+
+        <div class="footer">
 
             <p>
-                Machine Learning Mini Project
+                Water Quality Prediction using Machine Learning
             </p>
-        </footer>
+
+        </div>
+
 
     </div>
 
 
+    <!-- ==================================================
+         JavaScript
+    =================================================== -->
+
     <script src="script.js"></script>
 
+
 </body>
+
 </html>

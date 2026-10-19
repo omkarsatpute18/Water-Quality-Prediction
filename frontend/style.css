@@ -1,3 +1,7 @@
+/* ==========================================================
+   Global
+========================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,247 +10,365 @@
 
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
 
-    background: linear-gradient(
-        135deg,
-        #eaf7ff,
-        #f7fbff
-    );
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf6ff,
+            #f7fbff
+        );
 
     min-height: 100vh;
 
     color: #1f2937;
+
 }
 
 
-/* Main Container */
+/* ==========================================================
+   Main Container
+========================================================== */
 
 .container {
-    width: 90%;
-    max-width: 1000px;
 
-    margin: 0 auto;
+    width: 100%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 45px 20px;
+
 }
 
 
-/* Header */
+/* ==========================================================
+   Header
+========================================================== */
 
-header {
+.header {
+
     text-align: center;
 
-    padding: 40px 20px 25px;
+    margin-bottom: 30px;
+
 }
 
 
-header h1 {
-    font-size: 36px;
+.header h1 {
 
-    color: #075985;
+    font-size: 38px;
+
+    color: #0f4c81;
 
     margin-bottom: 10px;
+
+    font-weight: 700;
+
 }
 
 
-header p {
+.header p {
+
     font-size: 17px;
 
     color: #64748b;
+
 }
 
 
-/* Main Card */
+/* ==========================================================
+   Main Card
+========================================================== */
 
 .card {
-    background: white;
+
+    background: #ffffff;
 
     border-radius: 18px;
 
-    padding: 35px;
+    padding: 38px;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.08);
+        0 10px 30px
+        rgba(15, 76, 129, 0.10);
 
-    margin-bottom: 30px;
 }
 
 
 .card h2 {
+
     text-align: center;
 
-    color: #0f172a;
+    color: #1e3a5f;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+
+    font-size: 26px;
+
 }
 
 
-.description {
+/* ==========================================================
+   Input Information
+========================================================== */
+
+.input-note {
+
     text-align: center;
 
     color: #64748b;
 
+    font-size: 14px;
+
     margin-bottom: 30px;
 
-    line-height: 1.6;
 }
 
 
-/* Input Grid */
+/* ==========================================================
+   Form Grid
+========================================================== */
 
 .form-grid {
+
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 20px;
+    gap: 22px;
+
 }
 
 
-/* Input Group */
+/* ==========================================================
+   Form Group
+========================================================== */
 
-.input-group {
+.form-group {
+
     display: flex;
 
     flex-direction: column;
+
 }
 
 
-.input-group label {
-    font-weight: bold;
+.form-group label {
+
+    font-weight: 600;
 
     margin-bottom: 8px;
 
     color: #334155;
-}
-
-
-.input-group input {
-    padding: 12px;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 8px;
 
     font-size: 15px;
 
+}
+
+
+/* ==========================================================
+   Input Fields
+========================================================== */
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    color: #1e293b;
+
+    background: #ffffff;
+
     outline: none;
 
-    transition: 0.2s;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
 }
 
 
-.input-group input:focus {
-    border-color: #0284c7;
+.form-group input::placeholder {
+
+    color: #94a3b8;
+
+}
+
+
+.form-group input:focus {
+
+    border-color: #2563eb;
 
     box-shadow:
-        0 0 0 3px rgba(
-            2,
-            132,
-            199,
-            0.12
-        );
+        0 0 0 3px
+        rgba(37, 99, 235, 0.10);
+
 }
 
 
-/* Buttons */
+/* ==========================================================
+   Buttons
+========================================================== */
 
 .button-container {
+
     display: flex;
 
     justify-content: center;
 
     gap: 15px;
 
-    margin-top: 30px;
+    margin-top: 32px;
+
 }
 
 
-button {
+.button-container button {
+
     border: none;
 
-    padding: 13px 25px;
+    border-radius: 9px;
 
-    border-radius: 8px;
+    padding:
+        14px 26px;
 
     font-size: 16px;
 
+    font-weight: 600;
+
     cursor: pointer;
 
-    transition: 0.2s;
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease;
+
+}
+
+
+.button-container button:hover {
+
+    transform: translateY(-1px);
+
 }
 
 
 .predict-btn {
-    background: #0284c7;
+
+    background: #2563eb;
 
     color: white;
+
 }
 
 
 .predict-btn:hover {
-    background: #0369a1;
+
+    background: #1d4ed8;
+
 }
 
 
 .clear-btn {
+
     background: #e2e8f0;
 
     color: #334155;
+
 }
 
 
 .clear-btn:hover {
+
     background: #cbd5e1;
+
 }
 
 
-/* Loading */
+/* ==========================================================
+   Loading
+========================================================== */
 
 .loading {
+
     text-align: center;
 
     margin-top: 25px;
 
-    padding: 15px;
+    color: #2563eb;
 
-    background: #f0f9ff;
+    font-weight: 600;
 
-    border-radius: 8px;
+    font-size: 16px;
 
-    color: #0369a1;
-
-    font-weight: bold;
 }
 
 
-/* Result */
+/* ==========================================================
+   Result Card
+========================================================== */
 
 .result {
-    margin-top: 35px;
 
-    padding: 25px;
+    margin-top: 30px;
 
-    border-radius: 15px;
+    padding: 28px;
+
+    border-radius: 13px;
 
     background: #f8fafc;
 
+    border:
+        1px solid #e2e8f0;
+
     text-align: center;
+
 }
 
 
-.prediction-text {
-    font-size: 28px;
+#predictionResult {
 
-    font-weight: bold;
+    font-size: 30px;
 
-    margin: 20px 0;
+    margin-bottom: 25px;
+
 }
 
 
-/* Probability */
+#predictionResult.potable {
+
+    color: #15803d;
+
+}
+
+
+#predictionResult.not-potable {
+
+    color: #dc2626;
+
+}
+
+
+/* ==========================================================
+   Probability
+========================================================== */
 
 .probability-container {
+
     display: grid;
 
     grid-template-columns:
@@ -254,111 +376,170 @@ button {
 
     gap: 20px;
 
-    margin-top: 20px;
 }
 
 
 .probability-box {
-    background: white;
+
+    background: #ffffff;
 
     padding: 20px;
 
     border-radius: 10px;
 
-    border: 1px solid #e2e8f0;
+    border:
+        1px solid #e2e8f0;
+
 }
 
 
 .probability-box span {
+
     display: block;
 
     color: #64748b;
 
     margin-bottom: 8px;
+
+    font-size: 14px;
+
 }
 
 
 .probability-box strong {
-    font-size: 24px;
 
-    color: #075985;
+    font-size: 25px;
+
+    color: #1e3a5f;
+
 }
 
 
-#resultMessage {
+/* ==========================================================
+   Error
+========================================================== */
+
+.error {
+
     margin-top: 20px;
 
-    color: #475569;
+    padding: 15px;
 
-    line-height: 1.6;
+    border-radius: 8px;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    text-align: center;
+
 }
 
 
-/* Footer */
+/* ==========================================================
+   Hidden
+========================================================== */
 
-footer {
+.hidden {
+
+    display: none;
+
+}
+
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.footer {
+
     text-align: center;
 
-    padding: 20px;
+    margin-top: 25px;
 
     color: #64748b;
 
     font-size: 14px;
+
 }
 
 
-footer p {
-    margin: 5px;
-}
-
-
-/* Hidden */
-
-.hidden {
-    display: none;
-}
-
-
-/* Responsive Design */
+/* ==========================================================
+   Tablet
+========================================================== */
 
 @media (max-width: 800px) {
 
     .form-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
+
     }
 
 }
 
 
+/* ==========================================================
+   Mobile
+========================================================== */
+
 @media (max-width: 550px) {
 
     .container {
-        width: 95%;
+
+        padding:
+            25px 15px;
+
     }
+
 
     .card {
-        padding: 20px;
+
+        padding: 22px;
+
     }
 
-    header h1 {
-        font-size: 28px;
+
+    .header h1 {
+
+        font-size: 29px;
+
     }
+
+
+    .header p {
+
+        font-size: 15px;
+
+    }
+
 
     .form-grid {
+
         grid-template-columns: 1fr;
+
     }
+
 
     .probability-container {
+
         grid-template-columns: 1fr;
+
     }
+
 
     .button-container {
+
         flex-direction: column;
+
     }
 
-    button {
+
+    .button-container button {
+
         width: 100%;
+
     }
 
 }
